@@ -6,7 +6,7 @@ class Show < ActiveRecord::Base
 
     def self.most_popular_show #Returns the show with the highest rating.
         highRating = Show.maximum(:rating)
-        show = Show.where("rating == ?", highRating)
+        show = Show.where("rating == ?", highRating)[0]
     end
 
     def self.lowest_rating #Returns the lowest value in the ratings column.
@@ -15,7 +15,7 @@ class Show < ActiveRecord::Base
     
     def self.least_popular_show #Returns the show with the lowest rating.
         lowRating = Show.minimum(:rating)
-        show=Show.where("rating == ?", lowRating)
+        show=Show.where("rating == ?", lowRating)[0]
     end
     
     def self.ratings_sum #Returns the sum of all of the ratings.
